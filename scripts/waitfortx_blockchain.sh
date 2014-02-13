@@ -28,10 +28,14 @@ getConfirmations () {
 	fi
 }
 
-CONFIRMS=0
+CONFIRMS=-1
 while [ $CONFIRMS -lt $TX_NUM ]; do
-	CONFIRMS=$(getConfirmations "$TX_HASH")
-	echo "Confirmations: $CONFIRMS" 1>&2
+	NEWCONFIRMS=$(getConfirmations "$TX_HASH")
+	if [ $NEWCONFIRMS -ne $CONFIRMS ]; then
+		echo "Confirmations: $NEWCONFIRMS"
+		CONFIRMS=$NEWCONFIRMS
+	fi
+
 	if [ $CONFIRMS -lt $TX_NUM ]; then
 		sleep 15
 	fi
