@@ -1,8 +1,9 @@
 #!/bin/bash
 # Waits until a given number of confirmations have been announced for 
 # a given transaction.
+# Note: Uses blockchain.info API for transaction information
 # Usage:
-# btc_waitfortx.sh <TX_HASH> <CONFIRMATIONS>
+# waitfortx_blockchain.sh <TX_HASH> <CONFIRMATIONS>
 #
 # Dependencies:
 #	curl
